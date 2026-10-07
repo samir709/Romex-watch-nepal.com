@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   ROMEX Admin &middot; Watch Nepal
+  </title>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div class="admin-login" id="loginView">
+   <div class="panel">
+    <a aria-label="ROMEX Watch Nepal" class="brand-video" href="index.html">
+     <video autoplay="" class="brand-video-media" muted="" playsinline="" poster="assets/branding/romex-logo-poster.jpg" preload="auto">
+      <source src="assets/branding/romex-logo-animation.mp4" type="video/mp4"/>
+     </video>
+    </a>
+    <div class="eyebrow">
+     ROMEX WATCH NEPAL
+    </div>
+    <h1 style="font: 500 42px 'Playfair Display', serif">
+     Admin sign in
+    </h1>
+    <form id="loginForm">
+     <label>
+      Email
+      <input id="loginEmail" required="" type="email"/>
+     </label>
+     <label>
+      Password
+      <input id="loginPassword" required="" type="password"/>
+     </label>
+     <button class="btn" type="submit">
+      Sign in
+     </button>
+     <div class="message" id="loginMessage">
+     </div>
+    </form>
+   </div>
+  </div>
+  <div class="admin" id="adminApp" style="display: none">
+   <aside class="admin-side">
+    <a aria-label="ROMEX Watch Nepal" class="brand-video" href="index.html">
+     <video autoplay="" class="brand-video-media" muted="" playsinline="" poster="assets/branding/romex-logo-poster.jpg" preload="auto">
+      <source src="assets/branding/romex-logo-animation.mp4" type="video/mp4"/>
+     </video>
+    </a>
+    <div class="admin-label">
+     ADMIN
+    </div>
+    <nav class="admin-nav">
+     <a class="active" href="#dashboard">
+      Dashboard
+     </a>
+     <a href="#products">
+      Products
+     </a>
+     <a href="index.html">
+      View store
+     </a>
+    </nav>
+    <button class="mini" id="logout" type="button">
+     Sign out
+    </button>
+   </aside>
+   <main class="admin-main">
+    <div class="admin-title">
+     <div>
+      <div class="eyebrow">
+       ROMEX WATCH NEPAL
+      </div>
+      <h1>
+       Control centre
+      </h1>
+     </div>
+     <div class="notice" id="cloudStatus">
+     </div>
+    </div>
+    <section id="dashboard">
+     <div class="stats">
+      <div class="stat">
+       <small>
+        Products
+       </small>
+       <strong id="statProducts">
+        &mdash;
+       </strong>
+      </div>
+      <div class="stat">
+       <small>
+        Stock units
+       </small>
+       <strong id="statStock">
+        &mdash;
+       </strong>
+      </div>
+     </div>
+    </section>
+    <section class="panel" id="products">
+     <div class="admin-title">
+      <h2>
+       Products
+      </h2>
+      <button class="btn" id="addProduct" type="button">
+       Add watch
+      </button>
+     </div>
+     <div class="admin-table-scroll">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>
+          Watch
+         </th>
+         <th>
+          Collection
+         </th>
+         <th>
+          Price
+         </th>
+         <th>
+          MRP
+         </th>
+         <th>
+          Discount
+         </th>
+         <th>
+          Stock
+         </th>
+         <th>
+          Active
+         </th>
+         <th>
+          Actions
+         </th>
+        </tr>
+       </thead>
+       <tbody id="productRows">
+       </tbody>
+      </table>
+     </div>
+    </section>
+    <div class="admin-modal" id="modal" style="display: none">
+     <div class="panel">
+      <button class="mini" id="closeModal" type="button">
+       Close
+      </button>
+      <div id="modalBody">
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+  <script src="assets/js/config.js">
+  </script>
+  <script src="assets/js/supabase-client.js">
+  </script>
+  <script src="assets/js/admin.js">
+  </script>
+ </body>
+</html>

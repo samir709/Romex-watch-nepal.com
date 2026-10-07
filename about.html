@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   About Us &mdash; ROMEX Watch Nepal
+  </title>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <style>
+   .legal-page{background:#fff;min-height:100vh}.legal-wrap{max-width:920px;margin:0 auto;padding:90px 24px 120px}.legal-wrap .eyebrow{margin-bottom:14px}.legal-wrap h1{font:500 clamp(46px,7vw,78px)/1 'Playfair Display',serif;margin:0 0 45px}.legal-wrap h2{font:500 30px/1.15 'Playfair Display',serif;margin:44px 0 16px}.legal-wrap p,.legal-wrap li{font-size:15px;line-height:1.9;color:#555}.legal-wrap ul{padding-left:22px}.legal-nav{background:#0b0b0b;color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}.legal-nav a{color:#fff;font-size:11px;letter-spacing:.14em;text-transform:uppercase}@media(max-width:650px){.legal-nav{padding:15px}.legal-wrap{padding-top:55px}}
+  </style>
+ </head>
+ <body>
+  <div class="topbar">
+   Complimentary delivery across Nepal &middot; ROMEX WATCH NEPAL
+  </div>
+  <div class="legal-nav">
+   <a href="index.html">
+    &larr; ROMEX WATCH NEPAL
+   </a>
+   <a href="cart.html">
+    Cart
+   </a>
+  </div>
+  <main class="legal-page">
+   <article class="legal-wrap">
+    <p class="eyebrow">
+     ROMEX WATCH NEPAL
+    </p>
+    <h1>
+     About Us
+    </h1>
+    <h2>
+     Our Story
+    </h2>
+    <p>
+     In the heart of Nepal, where the timeless majesty of the Himalayas meets the vibrant rhythm of everyday life, Romex Watch Nepal was born. We believe that time is our most precious asset&mdash;and that tracking it beautifully shouldn't be a luxury reserved for a few.
+    </p>
+    <p>
+     Our journey started with a simple but powerful mission: to craft elegant, reliable, and accessible timepieces for the modern Nepali who values both style and substance. Whether you are navigating a busy workday in Kathmandu, celebrating a special family milestone, or exploring the natural wonders of our beautiful country, Romex is built to accompany you through every moment.
+    </p>
+    <p>
+     We blend classic aesthetic designs&mdash;featuring sophisticated metallic tones, precision quartz movements, and robust everyday durability&mdash;with an unmatched commitment to affordability. We don't just sell watches; we build reliable companions for your daily hustle, helping you make every second count.
+    </p>
+    <p>
+     Welcome to Romex Watch Nepal. Step into elegance, embrace your journey, and wear your time with pride.
+    </p>
+   </article>
+  </main>
+  <footer class="footer-romex">
+   <div class="container footer-bottom-romex" style="margin-top:0;border-top:0;padding-top:0">
+    <video aria-label="ROMEX Watch Nepal logo animation" autoplay="" class="footer-logo-video footer-bottom-video" data-romex-logo-video="" muted="" playsinline="" poster="assets/branding/romex-logo-poster.jpg" preload="auto">
+     <source src="assets/branding/romex-logo-animation.mp4" type="video/mp4"/>
+    </video>
+    <span>
+     &copy; 2026 ROMEX WATCH NEPAL
+    </span>
+    <span>
+     Mechinagar-6, Kakarvitta, Jhapa,Nepal
+    </span>
+   </div>
+  </footer>
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-romex-logo-video]').forEach((video) => {
+    const startFromBeginning = () => {
+      try {
+        video.currentTime = 0;
+      } catch (_) {}
+      video.play().catch(() => {});
+    };
+
+    video.addEventListener('loadedmetadata', startFromBeginning, { once: true });
+    video.addEventListener('canplay', () => {
+      if (video.paused && !video.ended) {
+        video.play().catch(() => {});
+      }
+    }, { once: true });
+
+    video.addEventListener('ended', () => {
+      try {
+        video.currentTime = video.duration;
+      } catch (_) {}
+      video.pause();
+    });
+
+    window.addEventListener('pageshow', () => {
+      if (!video.ended) {
+        startFromBeginning();
+      }
+    });
+  });
+});
+  </script>
+ </body>
+</html>

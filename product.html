@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>ROMEX Watch</title>
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html">Collection</a>
+    </nav>
+
+    <a aria-label="ROMEX Watch Nepal" class="brand-video" href="index.html">
+      <video
+        autoplay
+        class="brand-video-media"
+        muted
+        playsinline
+        preload="auto"
+        poster="assets/branding/romex-logo-poster.jpg"
+      >
+        <source src="assets/branding/romex-logo-animation.mp4" type="video/mp4">
+      </video>
+      <span class="brand-fallback">
+        ROMEX
+        <span>WATCH NEPAL</span>
+      </span>
+    </a>
+
+    <nav class="nav right">
+      <a href="cart.html">
+        Cart (<span data-cart-count>0</span>)
+      </a>
+    </nav>
+  </header>
+
+  <main class="product-page">
+    <div class="container">
+      <a class="card-link" href="index.html">
+        &larr; Back to collection
+      </a>
+
+      <div class="product-layout" id="product"></div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/app.js"></script>
+
+  <script>
+    RomexStore.ready().then(() => {
+      const id = new URLSearchParams(window.location.search).get('id');
+      const product = RomexStore.get(id) || RomexStore.products[0];
+
+      if (!product) {
+        return;
+      }
+
+      document.title = `${product.name} · ROMEX Watch Nepal`;
+
+      const gallery = product.images.map((image, index) => `
+        <button
+          class="thumb"
+          onclick="document.getElementById('mainPhoto').src='${image}'"
+          type="button"
+        >
+          <img src="${image}" alt="${product.name} view ${index + 1}">
+        </button>
+      `).join('');
+
+      const specs = Object.entries(product.specs || {}).map(([key, value]) => `
+        <div class="spec">
+          <span>${key}</span>
+          <strong>${value}</strong>
+        </div>
+      `).join('');
+
+      const price = product.discount
+        ? `
+          <span class="sale">-${Number(product.discount)}%</span>
+          <span class="now" style="font-size:28px">
+            ${RomexStore.format(product.price)}
+          </span>
+          <span class="mrp">
+            M.R.P.: <s>${RomexStore.format(product.mrp)}</s>
+          </span>
+        `
+        : `
+          <span class="now" style="font-size:28px">
+            ${RomexStore.format(product.price)}
+          </span>
+        `;
+
+      document.getElementById('product').innerHTML = `
+        <section class="gallery">
+          <div class="thumbs">
+            ${gallery}
+          </div>
+
+          <div class="main-photo">
+            <img
+              id="mainPhoto"
+              src="${product.images[0]}"
+              alt="${product.name}"
+            >
+          </div>
+        </section>
+
+        <section class="product-info">
+          <div class="eyebrow">${product.code} · ROMEX</div>
+          <h1>${product.name}</h1>
+
+          <div class="price">
+            ${price}
+          </div>
+
+          <p class="product-description">
+            ${product.description}
+          </p>
+
+          <div class="buy-row">
+            <button
+              class="btn"
+              onclick="RomexStore.add('${product.id}')"
+              type="button"
+            >
+              Add to cart
+            </button>
+
+            <button
+              class="btn light"
+              onclick="RomexStore.whatsappOrder(RomexStore.get('${product.id}'), 1)"
+              type="button"
+            >
+              Buy now on WhatsApp
+            </button>
+          </div>
+
+          <div class="specs">
+            ${specs}
+          </div>
+        </section>
+      `;
+    });
+  </script>
+</body>
+</html>

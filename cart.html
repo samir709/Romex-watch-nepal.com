@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>Cart · ROMEX Watch Nepal</title>
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html">Collection</a>
+    </nav>
+
+    <a aria-label="ROMEX Watch Nepal" class="brand-video" href="index.html">
+      <video
+        autoplay
+        class="brand-video-media"
+        muted
+        playsinline
+        poster="assets/branding/romex-logo-poster.jpg"
+        preload="auto"
+      >
+        <source src="assets/branding/romex-logo-animation.mp4" type="video/mp4">
+      </video>
+      <span class="brand-fallback">
+        ROMEX
+        <span>WATCH NEPAL</span>
+      </span>
+    </a>
+
+    <nav class="nav right">
+      <a href="cart.html">
+        Cart (<span data-cart-count>0</span>)
+      </a>
+    </nav>
+  </header>
+
+  <main class="cart-page">
+    <div class="container">
+      <div class="eyebrow">Your selection</div>
+      <h1 style="font:500 52px 'Playfair Display',serif">Shopping cart</h1>
+      <div id="cart"></div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/app.js"></script>
+
+  <script>
+    async function renderCart() {
+      await RomexStore.ready();
+
+      const root = document.getElementById('cart');
+      const items = RomexStore.cart();
+
+      if (!items.length) {
+        root.innerHTML = `
+          <div class="empty">
+            Your cart is empty.
+            <br><br>
+            <a class="btn" href="index.html">Explore watches</a>
+          </div>
+        `;
+        return;
+      }
+
+      let subtotal = 0;
+
+      root.innerHTML = items.map((row) => {
+        const product = RomexStore.get(row.id);
+
+        if (!product) {
+          return '';
+        }
+
+        const lineTotal = product.price * row.qty;
+        subtotal += lineTotal;
+
+        return `
+          <div class="cart-row">
+            <img src="${product.images[0]}" alt="${product.name}">
+            <div>
+              <strong>${product.name}</strong>
+              <div class="card-code">${product.code}</div>
+            </div>
+            <div class="qty">
+              <button onclick="RomexStore.change('${product.id}', ${row.qty - 1}); renderCart()">−</button>
+              <input value="${row.qty}" onchange="RomexStore.change('${product.id}', this.value); renderCart()">
+              <button onclick="RomexStore.change('${product.id}', ${row.qty + 1}); renderCart()">+</button>
+            </div>
+            <div>${RomexStore.format(lineTotal)}</div>
+            <button class="mini" onclick="RomexStore.remove('${product.id}'); renderCart()">Remove</button>
+          </div>
+        `;
+      }).join('');
+
+      root.insertAdjacentHTML('beforeend', `
+        <div class="summary">
+          <div class="summary-line">
+            <span>Total</span>
+            <strong>${RomexStore.format(subtotal)}</strong>
+          </div>
+          <button
+            class="btn"
+            style="width:100%;margin-top:18px"
+            onclick="RomexStore.whatsappCartOrder()"
+            type="button"
+          >
+            Order on WhatsApp
+          </button>
+        </div>
+      `);
+    }
+
+    RomexStore.ready().then(renderCart);
+  </script>
+</body>
+</html>

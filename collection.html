@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ROMEX Watch Nepal — Collection</title>
+  <meta name="description" content="Explore all ROMEX Watch Nepal women's timepieces by finish.">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    Complimentary delivery across Nepal · ROMEX WATCH NEPAL
+  </div>
+
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html#collection">Collection</a>
+      <a href="index.html#story">The House</a>
+    </nav>
+
+    <a class="brand-video" href="index.html" aria-label="ROMEX Watch Nepal">
+      <video
+        class="brand-video-media"
+        data-romex-logo-video
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        poster="assets/branding/romex-logo-poster.jpg"
+      >
+        <source src="assets/branding/romex-logo-animation.mp4" type="video/mp4">
+      </video>
+      <span class="brand-fallback">
+        ROMEX
+        <span>WATCH NEPAL</span>
+      </span>
+    </a>
+
+    <nav class="nav right">
+      <a href="admin.html">Admin</a>
+      <a href="cart.html">
+        Cart (<span data-cart-count>0</span>)
+      </a>
+    </nav>
+  </header>
+
+  <main class="collection-page">
+    <div class="container">
+      <div class="collection-page-head">
+        <div>
+          <p class="eyebrow">ROMEX COLLECTION</p>
+          <h1>All timepieces.</h1>
+        </div>
+
+        <div class="collection-page-filters" aria-label="Collection filters">
+          <button class="collection-filter active" data-filter="all" type="button">All</button>
+          <button class="collection-filter" data-filter="gold" type="button">Royal Gold</button>
+          <button class="collection-filter" data-filter="rose" type="button">Rose Classic</button>
+          <button class="collection-filter" data-filter="silver" type="button">Silver Classic</button>
+        </div>
+      </div>
+
+      <div class="collection-page-grid" id="collection-page-grid"></div>
+    </div>
+  </main>
+
+  <footer class="footer-romex">
+    <div class="container footer-romex-grid">
+      <div class="footer-brand-romex">
+        <video
+          class="footer-logo-video"
+          data-romex-logo-video
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+          poster="assets/branding/romex-logo-poster.jpg"
+          aria-label="ROMEX Watch Nepal logo animation"
+        >
+          <source src="assets/branding/romex-logo-animation.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html#collection">Collection</a>
+        <a href="index.html#world">The ROMEX World</a>
+        <a href="index.html#story">Our Story</a>
+        <a href="cart.html">Cart</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+9779746878973">+977 9746878973</a>
+        <a href="https://wa.me/9779746878973" rel="noopener" target="_blank">WhatsApp</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=26.6473056,88.1547778" rel="noopener" target="_blank">Google Maps</a>
+      </div>
+
+      <div class="footer-company">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="warranty.html">Warranty Policy</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="shipping.html">Shipping &amp; Delivery</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom-romex">
+      <span>© 2026 ROMEX WATCH NEPAL</span>
+      <span>Mechinagar-6, Kakarvitta, Jhapa,Nepal</span>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-romex-logo-video]').forEach((video) => {
+        const start = () => {
+          try {
+            video.currentTime = 0;
+          } catch (_) {
+            // Browser may not allow setting currentTime before metadata is ready.
+          }
+
+          video.play().catch(() => {});
+        };
+
+        if (video.readyState >= 1) {
+          start();
+        } else {
+          video.addEventListener('loadedmetadata', start, { once: true });
+        }
+
+        video.addEventListener('ended', () => {
+          try {
+            video.currentTime = video.duration;
+          } catch (_) {
+            // Keep the final decoded frame.
+          }
+
+          video.pause();
+        });
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/collection-page.js"></script>
+</body>
+</html>

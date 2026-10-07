@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>ROMEX · WhatsApp Order</title>
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html">Collection</a>
+    </nav>
+    <a aria-label="ROMEX Watch Nepal" class="brand-video" href="index.html">
+      <video autoplay class="brand-video-media" muted playsinline preload="auto" poster="assets/branding/romex-logo-poster.jpg">
+        <source src="assets/branding/romex-logo-animation.mp4" type="video/mp4">
+      </video>
+    </a>
+    <nav class="nav right">
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main class="product-page">
+    <div class="container">
+      <div class="panel" style="max-width:720px;margin:80px auto;text-align:center">
+        <p class="eyebrow">ROMEX WATCH NEPAL</p>
+        <h1 style="font:500 52px 'Playfair Display',serif">Order on WhatsApp.</h1>
+        <p>
+          ROMEX orders are handled directly through WhatsApp. Send your selected
+          watch to our team and we will confirm availability, delivery details
+          and payment instructions in the chat.
+        </p>
+        <button class="btn" onclick="RomexStore.whatsappCartOrder()" type="button">
+          Continue on WhatsApp
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
